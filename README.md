@@ -10,7 +10,7 @@ Visit [healthchecks.io](https://healthchecks.io) to get set up and obtain a cust
 1) Download the driver:
 
 ```
-wget -O weewxhealthchecks.zip https://github.com/uajqq/weewx-healthchecks/zipball/master
+wget -O weewxhealthchecks.zip https://github.com/uajqq/weewx-healthchecks/zipball/main
 ```
 
 2) Install the driver:
