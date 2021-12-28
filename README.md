@@ -1,4 +1,4 @@
-# weewx-Healthchecks
+# weewx-healthchecks
 Extension for weewx that pings [healthchecks.io](https://healthchecks.io) on every archive interval. This allows you to be notified via email, text, etc. if weewx stops updating.
 
 Visit [healthchecks.io](https://healthchecks.io) to get set up and obtain a custom url for your installation.
