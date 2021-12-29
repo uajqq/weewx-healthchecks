@@ -24,6 +24,7 @@ class healthchecksInstaller(ExtensionInstaller):
             name="Healthchecks",
             description="Send pings to healthchecks.io for monitoring purposes",
             author="uajqq",
+            report_services="user.healthchecks.Healthchecks",
             config=config_dict,
             files=[("bin/user", ["bin/user/healthchecks.py"])],
         )
