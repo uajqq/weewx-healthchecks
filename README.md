@@ -19,7 +19,7 @@ wget -O weewxhealthchecks.zip https://github.com/uajqq/weewx-healthchecks/zipbal
 sudo wee_extension --install weewxhealthchecks.zip
 ``` 
 
-3) Add the service as a `report_service` under the  `[Engine][[Services]]` stanza in `weewx.conf`:
+3) [this should be done automatically by the installer -- check to make sure] Add the service as a `report_service` under the  `[Engine][[Services]]` stanza in `weewx.conf`:
 
 ```
 [Engine]
