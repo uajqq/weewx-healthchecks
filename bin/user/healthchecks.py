@@ -53,7 +53,7 @@ class Healthchecks(StdService):
             # If the URL is missing, an exception will be raised and
             # the ping will not be sent.
             self.url = config_dict["Healthchecks"]["url"]
-            if "http" not in self.url:
+            if "http" not in self.url: # Simple check to see if the url looks valid
                 raise KeyError("url")
             log.info(
                 "healthchecks: Using url {}".format(self.url),
