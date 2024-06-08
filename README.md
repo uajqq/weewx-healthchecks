@@ -1,5 +1,5 @@
 # weewx-healthchecks
-Extension for weewx that pings [healthchecks.io](https://healthchecks.io) on every archive interval. This allows you to be notified via email, text message, etc. if weewx stops updating. You can even get a phone call.
+Extension for weewx that pings any specified URL, like [healthchecks.io](https://healthchecks.io), on every archive interval. This allows you to be notified via email, text message, etc. if weewx stops updating. You can even get a phone call.
 
 Visit [healthchecks.io](https://healthchecks.io) to get set up and obtain a custom url for your installation.
 
@@ -27,7 +27,7 @@ sudo wee_extension --install weewxhealthchecks.zip
         report_services = [...], user.healthchecks.Healthchecks
 ```
 
-4) Add your custom url from healthchecks.io in the appropriate place in `weewx.conf`:
+4) Add your custom url (for example, from healthchecks.io) in the appropriate place in `weewx.conf`:
 
 ```
 [Healthchecks]

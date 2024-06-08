@@ -11,7 +11,7 @@ class healthchecksInstaller(ExtensionInstaller):
         super(healthchecksInstaller, self).__init__(
             version="1.1",
             name='Healthchecks',
-            description='Send pings to healthchecks.io for monitoring purposes',
+            description='Send pings to any URL, like healthchecks.io, for monitoring purposes',
             author="uajqq",
             report_services="user.healthchecks.Healthchecks",
             config={

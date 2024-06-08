@@ -1,4 +1,7 @@
-"""A service to send a ping to healthchecks.io with every archive interval.
+"""A service to send a ping to any URL with every archive interval, for example
+healthchecks.io, to monitor system uptime and allow notifications if something
+isn't working.
+
 This service is adapted from the Alarm example extension included with weewx.
 
 *******************************************************************************
@@ -6,14 +9,14 @@ This service is adapted from the Alarm example extension included with weewx.
 To use this extension, add the following to the weewx configuration file:
 
 [Healthchecks]
-    url = "<your healthchecks.io URL>"
+    url = "<your URL>"
   
-With every archive interval, the specified url will be pinged. Specify the length
-of time in healthchecks.io before you get a warning.
+With every archive interval, the specified url will be pinged. If you are using
+healthchecks.io, you can specify the length of time before you get a warning.
 
 *******************************************************************************
 
-To enable this service:
+To enable this service, either install as specified in the readme, or:
 
 1) Copy this file to the user directory. See https://bit.ly/33YHsqX for where your user
 directory is located.
@@ -42,7 +45,7 @@ log = logging.getLogger(__name__)
 
 # Inherit from the base class StdService:
 class Healthchecks(StdService):
-    """Service that sends a ping to healthchecks.io with every archive"""
+    """Service that sends a ping to the specified URL with every archive"""
 
     def __init__(self, engine, config_dict):
         # Pass the initialization information on to my superclass:
@@ -53,10 +56,10 @@ class Healthchecks(StdService):
             # If the URL is missing, an exception will be raised and
             # the ping will not be sent.
             self.url = config_dict["Healthchecks"]["url"]
-            if "http" not in self.url: # Simple check to see if the url looks valid
+            if "http" not in self.url:  # Simple check to see if the url looks valid
                 raise KeyError("url")
             log.info(
-                "healthchecks: Using url {}".format(self.url),
+                "Healthchecks: Using url {}".format(self.url),
             )
             # If we got this far, it's ok to start intercepting events:
             self.bind(weewx.NEW_ARCHIVE_RECORD, self.new_archive_record)
@@ -77,7 +80,7 @@ class Healthchecks(StdService):
             log.error("Healthchecks: Attempt to ping failed: {}".format(e))
 
     def send_ping(self):
-        """Send the ping to healthchecks.io"""
+        """Send the ping to the specified URL"""
         try:
             urllib.request.urlopen(self.url, timeout=10)
         except Exception as e:
